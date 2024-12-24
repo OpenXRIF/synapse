@@ -9,6 +9,7 @@ dependencies = [
  "actix-web",
  "derive_more 1.0.0",
  "dotenvy",
+ "log",
  "rig-core",
  "serde",
  "serde_json",
