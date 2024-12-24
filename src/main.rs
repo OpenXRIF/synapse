@@ -1,18 +1,16 @@
-use actix_web::{App, HttpServer};
 use dotenvy::dotenv;
 
+mod api;
 mod config;
+mod errors;
+mod models;
+mod server;
+mod services;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     dotenv().ok();
-
     let config = config::Config::from_env();
 
-    HttpServer::new(move || {
-        App::new().route("/", actix_web::web::get().to(|| async { "Hello, Actix!" }))
-    })
-    .bind((config.api_host, config.api_port))?
-    .run()
-    .await
+    server::server(config).await
 }

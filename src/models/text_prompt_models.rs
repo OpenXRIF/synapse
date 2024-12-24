@@ -11,5 +11,4 @@ pub struct TextPromptRequest {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TextPromptResponse {
     pub response: String,
-    // Add other response fields as needed
 }

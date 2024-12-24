@@ -1,1 +1,1 @@
-pub mod text_prompt_api;
+pub mod text_prompt_models;

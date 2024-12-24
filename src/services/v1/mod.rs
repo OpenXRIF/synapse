@@ -1,1 +1,1 @@
-pub mod text_prompt;
+pub mod text_prompt_service;
