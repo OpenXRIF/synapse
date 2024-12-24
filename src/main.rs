@@ -10,7 +10,7 @@ mod services;
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     dotenv().ok();
-    let config = config::Config::from_env();
+    let config: config::Config = config::Config::from_env();
 
     server::server(config).await
 }
