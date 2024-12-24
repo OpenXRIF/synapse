@@ -12,7 +12,7 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(move || {
         App::new().route("/", actix_web::web::get().to(|| async { "Hello, Actix!" }))
     })
-    .bind((config.host, config.port))?
+    .bind((config.api_host, config.api_port))?
     .run()
     .await
 }
