@@ -5,17 +5,19 @@ use crate::inference::base::{ModelConfig, ModelProvider, ModelStrategy, ModelStr
 
 pub struct ModelInterface {
     model_config: ModelConfig,
-    _strategy: Box<dyn ModelStrategy>,
+    strategy: Box<dyn ModelStrategy>,
 }
 
 impl ModelInterface {
-    pub fn new(model_config: ModelConfig) -> Self {
-        ModelInterface { model_config }
+    pub fn new(model_config: ModelConfig, factory: &dyn ModelStrategyFactory) -> Self {
+        let strategy = factory.create_strategy(model_config.clone());
+        ModelInterface {
+            model_config,
+            strategy,
+        }
     }
 
     pub fn prompt(&self, prompt: String) -> String {
-        let factory = ModelStrategyFactory::new();
-        let strategy = factory.create_strategy(self.model_config.clone());
-        strategy.prompt(prompt)
+        self.strategy.prompt(prompt)
     }
 }
