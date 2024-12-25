@@ -28,6 +28,7 @@ impl FromStr for ModelProvider {
     }
 }
 
+#[derive(Debug, Clone)]
 pub struct ModelConfig {
     pub name: String,
     pub provider: ModelProvider,
