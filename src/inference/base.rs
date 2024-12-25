@@ -1,7 +1,6 @@
+use std::any::Any;
 use std::collections::HashMap;
 use std::str::FromStr;
-
-use serde_json;
 
 #[derive(Debug, PartialEq)]
 pub enum Modality {
@@ -33,7 +32,7 @@ pub struct ModelConfig {
     pub name: String,
     pub provider: ModelProvider,
     pub modality: Modality,
-    pub config_params: Option<serde_json::Value>,
+    pub config_params: Option<HashMap<String, Any>>,
 
     // Private params
     api_key: Option<String>,
@@ -43,9 +42,6 @@ pub trait ModelStrategy {
     fn new(config: ModelConfig) -> Self
     where
         Self: Sized;
-    fn prompt(...) -> Any;
-}
 
-pub struct ModelConfig {
-    pub provider: ModelProvider,
+    fn prompt(...) -> Any;
 }
