@@ -23,4 +23,12 @@ impl Config {
             cohere_api_key: cohere_api_key,
         }
     }
+
+    pub fn test() -> Self {
+        Self {
+            api_host: "localhost".to_string(),
+            api_port: 8080,
+            cohere_api_key: "test_cohere_key".to_string(),
+        }
+    }
 }
