@@ -1,19 +1,30 @@
+use std::cell::Cell;
+
 use crate::errors::ApiError;
 use crate::inference::{
     base::{Modality, ModelConfig, ModelProvider},
-    factory::ModelStrategyFactory,
     interface::ModelInterface,
 };
 use crate::models::text_prompt_models::{TextPromptRequest, TextPromptResponse};
 
-// static COHERE_CONFIG: ModelConfig = ModelConfig::new("cohere".to_string(), ModelProvider::Cohere, Modality::Text, None, None);
-// static COHERE_INTERFACE: ModelInterface = ModelInterface::new(COHERE_CONFIG);
+// Model Interface Singletons
+thread_local!(
+    pub static COHERE_INTERFACE: Cell<ModelInterface> = Cell::new(ModelInterface::new(
+        ModelConfig::new("cohere".to_string(), ModelProvider::Cohere, Modality::Text, None, None)
+    ))
+);
 
 /// Process a text prompt
 pub async fn process_prompt(request: TextPromptRequest) -> Result<TextPromptResponse, ApiError> {
-    Ok(TextPromptResponse {
-        response: format!("Prompt Format: {}", request.prompt_format),
-    })
+    let interface: ModelInterface = ModelInterface::new(ModelConfig::new(
+        "cohere".to_string(),
+        ModelProvider::Cohere,
+        Modality::Text,
+        None,
+        None,
+    ));
+    let response: String = interface.text_prompt(request.prompt_format);
+    Ok(TextPromptResponse { response })
 }
 
 #[cfg(test)]
