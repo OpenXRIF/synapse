@@ -4,7 +4,7 @@ use crate::config;
 use actix_web::{App, HttpServer};
 
 pub async fn server(config: config::Config) -> std::io::Result<()> {
-    println!("------ Starting Synapse Server ------");
+    println!("-------- Starting Synapse Server --------");
 
     HttpServer::new(move || {
         App::new()

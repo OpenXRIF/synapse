@@ -6,7 +6,7 @@ use crate::inference::{
     },
 };
 
-pub trait ModelStrategy {
+pub trait ModelStrategy: Send + Sync {
     fn initialize(config: ModelConfig) -> Self
     where
         Self: Sized;
