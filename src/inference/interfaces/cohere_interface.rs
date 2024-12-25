@@ -3,7 +3,7 @@ use crate::inference::base::{Modality, ModelConfig, ModelInterface, ModelProvide
 pub struct CohereStrategy;
 
 impl LLMStrategy for CohereStrategy {
-    fn new(_config: ModelConfig) -> Self {
+    fn new(config: ModelConfig) -> Self {
         CohereStrategy
     }
 
