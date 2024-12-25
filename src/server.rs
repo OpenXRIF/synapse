@@ -1,5 +1,6 @@
 use crate::api;
 use crate::config;
+
 use actix_web::{App, HttpServer};
 
 pub async fn server(config: config::Config) -> std::io::Result<()> {

@@ -6,7 +6,7 @@ pub struct Config {
 
 impl Config {
     pub fn from_env() -> Self {
-        let api_host: String = std::env::var("HOST").unwrap_or_else(|_| "0.0.0.0".to_string());
+        let api_host: String = std::env::var("HOST").unwrap_or_else(|_| "localhost".to_string());
         let api_port: u16 = std::env::var("PORT")
             .unwrap_or_else(|_| "8080".to_string())
             .parse()

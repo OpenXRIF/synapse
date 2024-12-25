@@ -1,5 +1,3 @@
-extern crate derive_more;
-
 use actix_web::{HttpResponse, ResponseError};
 use derive_more::Display;
 use serde::Serialize;
