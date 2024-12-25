@@ -1,5 +1,3 @@
-use std::str::FromStr;
-
 use actix_web::{web, HttpResponse};
 use log::info;
 
