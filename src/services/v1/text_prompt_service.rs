@@ -7,7 +7,7 @@ use crate::inference::{
 use crate::models::text_prompt_models::{TextPromptRequest, TextPromptResponse};
 
 // static COHERE_CONFIG: ModelConfig = ModelConfig::new("cohere".to_string(), ModelProvider::Cohere, Modality::Text, None, None);
-// static COHERE_INTERFACE: ModelInterface = ModelInterface::new(COHERE_CONFIG, ModelStrategyFactory::new());
+// static COHERE_INTERFACE: ModelInterface = ModelInterface::new(COHERE_CONFIG);
 
 /// Process a text prompt
 pub async fn process_prompt(request: TextPromptRequest) -> Result<TextPromptResponse, ApiError> {

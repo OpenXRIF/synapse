@@ -2,18 +2,21 @@ extern crate derive_more;
 extern crate env_logger;
 extern crate log;
 
-use dotenvy::dotenv;
-
 mod api;
 mod config;
+mod constants;
 mod errors;
 mod inference;
 mod models;
 mod server;
 mod services;
 
+use crate::constants::WELCOME_ASCII;
+use dotenvy::dotenv;
+
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    println!("{}", WELCOME_ASCII);
     env_logger::init();
     dotenv().ok();
 
