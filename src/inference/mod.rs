@@ -1,2 +1,4 @@
 pub mod base;
-pub mod interfaces;
+pub mod factory;
+pub mod interface;
+pub mod strategies;

@@ -7,6 +7,7 @@ use dotenvy::dotenv;
 mod api;
 mod config;
 mod errors;
+mod inference;
 mod models;
 mod server;
 mod services;

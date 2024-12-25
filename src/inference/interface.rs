@@ -1,7 +1,7 @@
-use std::collections::HashMap;
-use std::sync::Mutex;
-
-use crate::inference::base::{ModelConfig, ModelProvider, ModelStrategy, ModelStrategyFactory};
+use crate::inference::{
+    base::ModelConfig,
+    factory::{ModelStrategy, ModelStrategyFactory},
+};
 
 pub struct ModelInterface {
     model_config: ModelConfig,
@@ -9,15 +9,16 @@ pub struct ModelInterface {
 }
 
 impl ModelInterface {
-    pub fn new(model_config: ModelConfig, factory: &dyn ModelStrategyFactory) -> Self {
-        let strategy = factory.create_strategy(model_config.clone());
+    pub fn new(model_config: ModelConfig) -> Self {
+        let strategy: Box<dyn ModelStrategy> =
+            ModelStrategyFactory::get_strategy(model_config.clone());
         ModelInterface {
             model_config,
             strategy,
         }
     }
 
-    pub fn prompt(&self, prompt: String) -> String {
-        self.strategy.prompt(prompt)
+    pub fn text_prompt(&self, prompt: String) -> String {
+        self.strategy.text_prompt(prompt)
     }
 }

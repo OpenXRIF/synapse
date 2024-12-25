@@ -6,14 +6,17 @@ pub struct CohereStrategy {
 }
 
 impl ModelStrategy for CohereStrategy {
-    fn new(config: ModelConfig) -> Self {
-        CohereStrategy {
-            client: config.name,
-            _api_key: config.api_key.unwrap(),
+    fn initialize(config: ModelConfig) -> Self {
+        match config.api_key {
+            None => panic!("API key is required for Cohere models"),
+            Some(_) => CohereStrategy {
+                client: config.name,
+                _api_key: config.api_key.unwrap(),
+            },
         }
     }
 
-    fn prompt(&self, prompt: String) -> String {
-        prompt
+    fn text_prompt(&self, prompt: String) -> String {
+        self.client.clone() + &prompt
     }
 }
