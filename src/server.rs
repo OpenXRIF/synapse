@@ -1,45 +1,14 @@
-use std::collections::HashMap;
-use tokio::sync::Mutex;
-
 use crate::api;
 use crate::config;
-use crate::inference::{
-    base::{Modality, ModelConfig, ModelProvider},
-    interface::ModelInterface,
-};
 
 use actix_web::{web::Data, App, HttpServer};
-
-struct AppState {
-    model_interfaces: Mutex<HashMap<String, ModelInterface>>,
-}
-
-impl AppState {
-    pub fn new(config: config::Config) -> Self {
-        let mut interfaces: HashMap<String, ModelInterface> = HashMap::new();
-
-        let cohere_config = ModelConfig::new(
-            "cohere".to_string(),
-            ModelProvider::Cohere,
-            Modality::Text,
-            None,
-            Some(config.cohere_api_key),
-        );
-
-        interfaces.insert("cohere".to_string(), ModelInterface::new(cohere_config));
-
-        AppState {
-            model_interfaces: Mutex::new(interfaces),
-        }
-    }
-}
 
 pub async fn server(config: config::Config) -> std::io::Result<()> {
     println!("-------- Starting Synapse Server --------");
 
     let api_config = config.clone();
     HttpServer::new(move || {
-        let app_data = Data::new(AppState::new(config.clone()));
+        let app_data = Data::new(api::state::AppState::new(config.clone()));
 
         App::new()
             .app_data(app_data)
