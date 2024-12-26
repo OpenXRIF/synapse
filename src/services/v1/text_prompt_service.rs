@@ -42,8 +42,8 @@ mod tests {
             "cohere".to_string(),
             ModelProvider::Cohere,
             Modality::Text,
-            None,
             Some("cohere_test_api_key".to_string()),
+            None,
         ));
 
         let mut test_interfaces: HashMap<String, ModelInterface> = HashMap::new();
@@ -65,8 +65,8 @@ mod tests {
             "cohere".to_string(),
             ModelProvider::Cohere,
             Modality::Text,
-            None,
             Some("cohere_test_api_key".to_string()),
+            None,
         ));
 
         let mut test_interfaces: HashMap<String, ModelInterface> = HashMap::new();

@@ -42,15 +42,15 @@ impl ModelConfig {
         name: String,
         provider: ModelProvider,
         modality: Modality,
-        config_params: Option<HashMap<String, String>>,
         api_key: Option<String>,
+        config_params: Option<HashMap<String, String>>,
     ) -> Self {
         ModelConfig {
             name,
             provider,
             modality,
-            config_params,
             api_key,
+            config_params,
         }
     }
 }

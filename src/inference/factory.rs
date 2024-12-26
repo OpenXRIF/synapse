@@ -1,3 +1,5 @@
+use async_trait::async_trait;
+
 use crate::inference::{
     base::{ModelConfig, ModelProvider},
     strategies::{
@@ -6,12 +8,13 @@ use crate::inference::{
     },
 };
 
+#[async_trait]
 pub trait ModelStrategy: Send + Sync {
     fn initialize(config: ModelConfig) -> Self
     where
         Self: Sized;
 
-    fn text_prompt(&self, input: String) -> String;
+    async fn text_prompt(&self, input: String) -> String;
 }
 
 pub struct ModelStrategyFactory;

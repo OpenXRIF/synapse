@@ -19,8 +19,8 @@ impl AppState {
             "cohere".to_string(),
             ModelProvider::Cohere,
             Modality::Text,
-            None,
             Some(config.cohere_api_key),
+            None,
         );
 
         interfaces.insert("cohere".to_string(), ModelInterface::new(cohere_config));
@@ -30,3 +30,5 @@ impl AppState {
         }
     }
 }
+
+// TODO: #[cfg(test)]

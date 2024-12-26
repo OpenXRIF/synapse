@@ -7,8 +7,9 @@ mod models;
 mod server;
 mod services;
 
-use crate::constants::WELCOME_ASCII;
 use dotenvy::dotenv;
+
+use crate::constants::WELCOME_ASCII;
 
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
