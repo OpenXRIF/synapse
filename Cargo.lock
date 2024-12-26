@@ -10,6 +10,7 @@ dependencies = [
  "derive_more 1.0.0",
  "dotenvy",
  "env_logger",
+ "futures",
  "log",
  "rig-core",
  "serde",
