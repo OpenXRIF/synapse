@@ -2,7 +2,7 @@ use actix_web::{HttpResponse, ResponseError};
 use derive_more::Display;
 use serde::Serialize;
 
-#[derive(Debug, Display)]
+#[derive(Debug, Display, Eq, PartialEq)]
 pub enum ApiError {
     #[display("Internal Server Error")]
     InternalServerError,

@@ -7,9 +7,11 @@ name = "Synapse"
 version = "0.1.0"
 dependencies = [
  "actix-web",
+ "async-trait",
  "derive_more 1.0.0",
  "dotenvy",
  "env_logger",
+ "futures",
  "log",
  "rig-core",
  "serde",
@@ -299,6 +301,17 @@ checksum = "2109dbce0e72be3ec00bed26e6a7479ca384ad226efdd66db8fa2e3a38c83125"
 dependencies = [
  "anstyle",
  "windows-sys 0.59.0",
+]
+
+[[package]]
+name = "async-trait"
+version = "0.1.83"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "721cae7de5c34fbb2acd27e21e6d2cf7b886dce0c27388d46c4e6c47ea4318dd"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]
