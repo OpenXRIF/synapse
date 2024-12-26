@@ -3,13 +3,6 @@ use crate::inference::{
     factory::{ModelStrategy, ModelStrategyFactory},
 };
 
-pub struct InterfaceMapper;
-impl InterfaceMapper {
-    pub fn get_interface(config: ModelConfig) -> ModelInterface {
-        ModelInterface::new(config)
-    }
-}
-
 pub struct ModelInterface {
     strategy: Box<dyn ModelStrategy>,
 }

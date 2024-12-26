@@ -1,3 +1,4 @@
+#[derive(Clone)]
 pub struct Config {
     pub api_host: String,
     pub api_port: u16,
