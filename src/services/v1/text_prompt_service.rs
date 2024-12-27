@@ -9,8 +9,8 @@ pub async fn process_prompt(
     request: TextPromptRequest,
     interfaces: &HashMap<String, ModelInterface>,
 ) -> Result<TextPromptResponse, ApiError> {
-    // TODO: Build Prompt before sending to model
     // TODO: Use Model Interface to get response
+    // TODO: Build Prompt before sending to model
     match request.model_name {
         Some(name) => match interfaces.get(&name) {
             Some(interface) => {

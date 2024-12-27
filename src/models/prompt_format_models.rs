@@ -1,4 +1,23 @@
+use std::collections::HashMap;
+
 use serde::{Deserialize, Serialize};
+
+#[derive(Debug, Serialize, Deserialize)]
+pub enum PromptFormatArg {
+    String(String),
+    Integer(i32),
+    Float(f32),
+    Boolean(bool),
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PromptFormat {
+    pub prompt_format_name: String,
+    pub prompt: String,
+    pub prompt_args: HashMap<String, PromptFormatArg>,
+    pub rag_args: HashMap<String, String>,
+    pub metadata: HashMap<String, String>,
+}
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct GetPromptFormatResponse {
