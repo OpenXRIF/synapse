@@ -9,24 +9,26 @@ pub async fn process_prompt(
     request: TextPromptRequest,
     interfaces: &HashMap<String, ModelInterface>,
 ) -> Result<TextPromptResponse, ApiError> {
-    // TODO: Build Prompt before sending to model
-    // TODO: Use Model Interface to get response
+    let _interface: &ModelInterface;
+
     match request.model_name {
         Some(name) => match interfaces.get(&name) {
             Some(interface) => {
-                return Ok(TextPromptResponse {
-                    response: interface.text_prompt(request.prompt_format).await,
-                });
+                _interface = interface;
             }
             None => return Err(ApiError::NotFound("Model not found".to_string())),
         },
         None => {
-            let interface: &ModelInterface = interfaces.get("cohere").unwrap();
-            return Ok(TextPromptResponse {
-                response: interface.text_prompt(request.prompt_format).await,
-            });
+            _interface = interfaces.get("cohere").unwrap();
         }
     }
+
+    // TODO: Build Prompt before sending to model
+    let mut _prompt: String;
+
+    Ok(TextPromptResponse {
+        response: _interface.text_prompt(request.prompt_format).await,
+    })
 }
 
 #[cfg(test)]
@@ -38,6 +40,7 @@ mod tests {
     };
 
     // TODO: Modify this test after strategy pattern with Async implemented.
+    // TODO: Mock the Interface's outgoing prompt request
     // #[tokio::test]
     // async fn test_process_prompt_success() {
     //     let test_interface: ModelInterface = ModelInterface::new(ModelConfig::new(
