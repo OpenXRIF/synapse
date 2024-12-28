@@ -2,7 +2,9 @@ use std::collections::HashMap;
 
 use crate::errors::ApiError;
 use crate::inference::interface::ModelInterface;
+use crate::models::prompt_format_models::{PromptFormat, PromptFormatArgType};
 use crate::models::text_prompt_models::{TextPromptRequest, TextPromptResponse};
+use crate::prompting::{prompt_builder::build_prompt, rag::fill::RagFiller};
 
 /// Process a text prompt
 pub async fn process_prompt(
@@ -23,11 +25,31 @@ pub async fn process_prompt(
         }
     }
 
-    // TODO: Build Prompt before sending to model
-    let mut _prompt: String;
+    // TODO: Add prompt format builder at app state level.
+    // NOTE: This is a temporary implementation to test the prompt builder.
+    let mut _prompt_args: HashMap<String, PromptFormatArgType> = HashMap::new();
+    _prompt_args.insert(
+        "test_arg".to_string(),
+        PromptFormatArgType::String(request.prompt_format),
+    );
+    let mut _arg_types: HashMap<String, PromptFormatArgType> = HashMap::new();
+    _arg_types.insert(
+        "test_arg".to_string(),
+        PromptFormatArgType::String("".to_string()),
+    );
+    let mut _prompt: String = build_prompt(
+        PromptFormat {
+            name: "test".to_string(),
+            prompt: "What is the capital of {{ test_arg }}?".to_string(),
+            prompt_args: _arg_types,
+            metadata: HashMap::new(),
+        },
+        _prompt_args,
+        &RagFiller::new(),
+    );
 
     Ok(TextPromptResponse {
-        response: _interface.text_prompt(request.prompt_format).await,
+        response: _interface.text_prompt(_prompt).await,
     })
 }
 
