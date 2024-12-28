@@ -10,24 +10,24 @@ pub async fn process_prompt(
     interfaces: &HashMap<String, ModelInterface>,
 ) -> Result<TextPromptResponse, ApiError> {
     // TODO: Use Model Interface to get response
-    let interface: &ModelInterface;
+    let _interface: &ModelInterface;
 
     match request.model_name {
         Some(name) => match interfaces.get(&name) {
-            Some(retrieved_interface) => {
-                interface = retrieved_interface;
+            Some(interface) => {
+                _interface = interface;
             }
             None => return Err(ApiError::NotFound("Model not found".to_string())),
         },
         None => {
-            interface = interfaces.get("cohere").unwrap();
+            _interface = interfaces.get("cohere").unwrap();
         }
     }
 
     // TODO: Build Prompt before sending to model
 
     Ok(TextPromptResponse {
-        response: interface.text_prompt(request.prompt_format).await,
+        response: _interface.text_prompt(request.prompt_format).await,
     })
 }
 

@@ -1,9 +1,11 @@
 mod api;
 mod config;
 mod constants;
+mod database;
 mod errors;
 mod inference;
 mod models;
+mod prompting;
 mod server;
 mod services;
 
