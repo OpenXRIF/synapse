@@ -8,3 +8,5 @@ pub static WELCOME_ASCII: &str = r#"
         __/ |           | |             
        |___/            |_|             BrainFlight - 2025
 "#;
+
+pub static RAG_ARG_PREFIX: &str = "rag:";

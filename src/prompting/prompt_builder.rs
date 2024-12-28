@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 
+use crate::constants::RAG_ARG_PREFIX;
 use crate::models::prompt_format_models::{PromptFormat, PromptFormatArgType};
 use crate::prompting::rag::fill::RagFiller;
 
@@ -14,8 +15,8 @@ pub fn build_prompt(
     for (key, value) in args {
         // TODO: Document how to format prompts with rag arguments and auto-fills
         // Example prompt arg: {{ rag:get_waypoints_from_waypoint_set:e7-2025 }}
-        if key.starts_with("rag:") {
-            let rag_result: String = rag_filler.fill(&key[4..]);
+        if key.starts_with(RAG_ARG_PREFIX) {
+            let rag_result: String = rag_filler.fill(&key[RAG_ARG_PREFIX.len()..]);
 
             prompt = prompt.replace(&format!("{{{{ {} }}}}", key), &rag_result);
         } else {
