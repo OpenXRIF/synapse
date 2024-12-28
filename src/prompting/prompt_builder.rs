@@ -7,7 +7,7 @@ use crate::prompting::rag::fill::RagFiller;
 pub fn build_prompt(
     format: PromptFormat,
     args: HashMap<String, PromptFormatArgType>,
-    rag_filler: RagFiller,
+    rag_filler: &RagFiller,
 ) -> String {
     let mut prompt: String = format.prompt.clone();
 
@@ -60,7 +60,7 @@ mod tests {
             PromptFormatArgType::String("test_arg_value".to_string().into()),
         );
 
-        let prompt = build_prompt(format, args, rag_filler);
+        let prompt = build_prompt(format, args, &rag_filler);
 
         assert_eq!(prompt, "This is a test prompt with a test_arg_value.");
     }
@@ -82,7 +82,7 @@ mod tests {
             PromptFormatArgType::String(String::new()),
         );
 
-        let prompt: String = build_prompt(format, args, rag_filler);
+        let prompt: String = build_prompt(format, args, &rag_filler);
 
         assert_eq!(prompt, "This is a test prompt with a test_rag_value.");
     }

@@ -9,7 +9,6 @@ pub async fn process_prompt(
     request: TextPromptRequest,
     interfaces: &HashMap<String, ModelInterface>,
 ) -> Result<TextPromptResponse, ApiError> {
-    // TODO: Use Model Interface to get response
     let _interface: &ModelInterface;
 
     match request.model_name {
@@ -25,6 +24,7 @@ pub async fn process_prompt(
     }
 
     // TODO: Build Prompt before sending to model
+    let mut _prompt: String;
 
     Ok(TextPromptResponse {
         response: _interface.text_prompt(request.prompt_format).await,
@@ -40,6 +40,7 @@ mod tests {
     };
 
     // TODO: Modify this test after strategy pattern with Async implemented.
+    // TODO: Mock the Interface's outgoing prompt request
     // #[tokio::test]
     // async fn test_process_prompt_success() {
     //     let test_interface: ModelInterface = ModelInterface::new(ModelConfig::new(
