@@ -1,7 +1,9 @@
 version: '3.8'
 
 services:
-  api:
+  web:
+    image: rust:latest
+    container_name: actix_web
     build:
       context: .
       dockerfile: Dockerfile
@@ -9,14 +11,28 @@ services:
       - "8080:8080"
     depends_on:
       - db
-      - cache
+      - valkey
+    environment:
+      DATABASE_URL: postgres://postgres:<pg_password>@db:5432/<database_name>
+      VALKEY_PORT: 6379
 
   db:
-    image: nouchka/sqlite3
-    volumes:
-      - ./data:/data
-
-  cache:
-    image: memcached:latest
+    image: postgres:latest
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: <pg_password>
+      POSTGRES_DB: <database_name>
     ports:
-      - "11211:11211"
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  valkey:
+    image: valkey:latest
+    container_name: valkey_cache
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:
