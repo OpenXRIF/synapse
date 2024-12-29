@@ -1,0 +1,5 @@
+apiVersion: v2
+name: synapse
+description: A Helm chart for deploying the Synapse API with an NGINX Ingress Controller
+version: 0.1.0
+type: application

@@ -1,0 +1,23 @@
+replicaCount: 1
+image:
+  repository: synapse
+  tag: slim-latest
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 8080
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: synapse.local
+      paths:
+        - path: /
+          pathType: Prefix
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 200m
+    memory: 256Mi
