@@ -16,7 +16,7 @@ pub enum PromptFormatArgType {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PromptFormat {
-    pub name: String,
+    pub format_name: String,
     pub prompt: String,
     pub prompt_args: HashMap<String, PromptFormatArgType>,
     pub metadata: HashMap<String, String>,

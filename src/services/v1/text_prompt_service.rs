@@ -39,7 +39,7 @@ pub async fn process_prompt(
     );
     let mut _prompt: String = build_prompt(
         PromptFormat {
-            name: "test".to_string(),
+            format_name: "test".to_string(),
             prompt: "What is the capital of {{ test_arg }}?".to_string(),
             prompt_args: _arg_types,
             metadata: HashMap::new(),

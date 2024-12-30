@@ -15,7 +15,7 @@ impl AppState {
     pub fn new(config: config::Config) -> Self {
         let mut interfaces: HashMap<String, ModelInterface> = HashMap::new();
 
-        let cohere_config = ModelConfig::new(
+        let cohere_config: ModelConfig = ModelConfig::new(
             "cohere".to_string(),
             ModelProvider::Cohere,
             Modality::Text,

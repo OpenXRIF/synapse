@@ -2,8 +2,8 @@
 pub struct Config {
     pub api_host: String,
     pub api_port: u16,
-    pub db_type: String,
-    pub db_url: String,
+    pub database_type: String,
+    pub database_url: String,
     pub cohere_api_key: String,
 }
 
@@ -17,8 +17,10 @@ impl Config {
             .expect("PORT must be a number");
 
         // Database Configuration
-        let db_type: String = std::env::var("DB_TYPE").unwrap_or_else(|_| "sqlite".to_string());
-        let db_url: String = std::env::var("DB_URL").unwrap_or_else(|_| "sqlite".to_string());
+        let db_type: String =
+            std::env::var("DATABASE_TYPE").unwrap_or_else(|_| "sqlite".to_string());
+        let db_url: String =
+            std::env::var("DATABASE_URL").unwrap_or_else(|_| "sqlite://test.db".to_string());
 
         // Model Provider API Keys
         let cohere_api_key: String =
@@ -27,8 +29,8 @@ impl Config {
         Self {
             api_host: api_host,
             api_port: api_port,
-            db_type: db_type,
-            db_url: db_url,
+            database_type: db_type,
+            database_url: db_url,
             cohere_api_key: cohere_api_key,
         }
     }
@@ -37,8 +39,8 @@ impl Config {
         Self {
             api_host: "localhost".to_string(),
             api_port: 8080,
-            db_type: "test_db_type".to_string(),
-            db_url: "test_db_url".to_string(),
+            database_type: "test_db_type".to_string(),
+            database_url: "test_db_url".to_string(),
             cohere_api_key: "test_cohere_key".to_string(),
         }
     }

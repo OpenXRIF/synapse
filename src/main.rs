@@ -6,6 +6,7 @@ mod errors;
 mod inference;
 mod models;
 mod prompting;
+mod schema;
 mod server;
 mod services;
 

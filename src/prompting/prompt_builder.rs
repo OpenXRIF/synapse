@@ -49,7 +49,7 @@ mod tests {
     fn test_build_prompt() {
         let rag_filler: RagFiller<'_> = setup_test();
         let format: PromptFormat = PromptFormat {
-            name: "test".to_string(),
+            format_name: "test".to_string(),
             prompt: "This is a test prompt with a {{ test_arg }}.".to_string(),
             prompt_args: HashMap::new(),
             metadata: HashMap::new(),
@@ -71,7 +71,7 @@ mod tests {
         let rag_filler: RagFiller<'_> = setup_test();
 
         let format: PromptFormat = PromptFormat {
-            name: "test".to_string(),
+            format_name: "test".to_string(),
             prompt: "This is a test prompt with a {{ rag:test_rag_arg }}.".to_string(),
             prompt_args: HashMap::new(),
             metadata: HashMap::new(),
