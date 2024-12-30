@@ -7,7 +7,7 @@
   <h3 align="center">Synapse</h3>
 
   <p align="center">
-    VLA orchestration platform helping you manage robot instruction prompts and waypoint metadata
+    VLA (Vision-Language-Action) model serving platform that helps you manage robot instruction prompts, RAG, and waypoint metadata.
     <br />
     <a href="https://github.com/BrainFlight/Synapse"><strong>Explore the docs »</strong></a>
     <br />
@@ -45,7 +45,7 @@
 
 ## About The Project
 
-
+Embodied AI is an emerging and very promising research field but at the moment, it is difficult to break into. We aim to improve the accessibility of large multi-modal language models that convert natural language instructions into serialized robot actions. Synapse is our first step in addressing this as it provides a low-latency inference API for VLA (Vision-Language-Action) models and LLMs catered towards robotics use cases. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -59,9 +59,6 @@ Get API Keys
 
 `.env` file:
 ```sh
-ANTHROPIC_API_KEY=""
-OPENAI_API_KEY=""
-HF_ACCESS_TOKEN=""
 COHERE_API_KEY=""
 ```
 
@@ -81,6 +78,8 @@ cargo build
 
 ## Roadmap
 
-- Enable Compatibility with Cohere, OpenAI, Anthropic, HuggingFace, and custom models
+- Enable Compatibility with OpenAI, Anthropic, HuggingFace, and custom models
+- Integrate gRPC communication with onboard robot system
+- Include 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
