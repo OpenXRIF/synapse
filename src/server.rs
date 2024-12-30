@@ -1,5 +1,6 @@
 use crate::api;
 use crate::config;
+use crate::state::AppState;
 
 use actix_web::{web::Data, App, HttpServer};
 
@@ -8,7 +9,7 @@ pub async fn server(config: config::Config) -> std::io::Result<()> {
 
     let api_config = config.clone();
     HttpServer::new(move || {
-        let app_data = Data::new(api::state::AppState::new(config.clone()));
+        let app_data = Data::new(AppState::new(config.clone()));
 
         App::new()
             .app_data(app_data)

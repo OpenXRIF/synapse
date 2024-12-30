@@ -1,10 +1,10 @@
 use actix_web::{web, HttpResponse};
 use log::info;
 
-use crate::api::state::AppState;
 use crate::errors::ApiError;
 use crate::models::text_prompt_models::TextPromptRequest;
 use crate::services::v1::text_prompt_service;
+use crate::state::AppState;
 
 pub fn configure(cfg: &mut web::ServiceConfig) {
     cfg.service(web::scope("/v1/text_prompt").route("", web::post().to(process_prompt)));

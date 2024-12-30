@@ -9,6 +9,7 @@ mod prompting;
 mod schema;
 mod server;
 mod services;
+mod state;
 
 use dotenvy::dotenv;
 
