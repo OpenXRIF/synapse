@@ -9,7 +9,7 @@
   <p align="center">
     VLA (Vision-Language-Action) model serving platform that helps you manage robot instruction prompts, RAG, and waypoint metadata.
     <br />
-    <a href="https://github.com/BrainFlight/Synapse"><strong>Explore the docs »</strong></a>
+    <a href="https://brainflight.github.io/docs/docs/synapse/"><strong>Explore the docs »</strong></a>
     <br />
   </p>
 </div>
