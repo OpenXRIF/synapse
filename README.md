@@ -81,5 +81,6 @@ cargo build
 - Enable Compatibility with OpenAI, Anthropic, HuggingFace, and custom models
 - Integrate gRPC communication with onboard robot system
 - Enable high-throughput image and point-cloud processing for robots with LiDAR, radar, or stereo cameras
+- Customizable evaluation pipeline and model decay detection
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
