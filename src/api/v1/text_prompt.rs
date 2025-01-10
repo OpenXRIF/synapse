@@ -7,7 +7,10 @@ use crate::services::v1::text_prompt_service;
 use crate::state::AppState;
 
 pub fn configure(cfg: &mut web::ServiceConfig) {
-    cfg.service(web::scope("/v1/text_prompt").route("", web::post().to(process_prompt)));
+    cfg.service(
+        web::scope("/v1/text_prompt")
+            .route("", web::post().to(process_prompt))
+    );
 }
 
 /// POST /v1/text_prompt
