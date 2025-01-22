@@ -4,7 +4,7 @@
 
   <a href="https://github.com/BrainFlight/Synapse"><img width="140px" src="./docs/images/logo.png"></a>
 
-  <h3 align="center">Synapse</h3>
+  <h3 align="center">Synapse - VLA Inference</h3>
 
   <p align="center">
     VLA (Vision-Language-Action) model serving platform that helps you manage robot instruction prompts, RAG, and waypoint metadata.
