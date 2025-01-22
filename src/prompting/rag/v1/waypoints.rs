@@ -4,7 +4,7 @@ pub fn get_waypoints_list(_: &str) -> String {
     Waypoint(
         name="E7 1st floor Elevators",
         floor=1,
-        keywords=["entrance"],
+        keywords=["elevator"],
     ),
     Waypoint(
         name="E7 North Entrance",
