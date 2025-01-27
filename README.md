@@ -2,7 +2,7 @@
 <br />
 <div align="center">
 
-  <a href="https://github.com/BrainFlight/Synapse"><img width="140px" src="./docs/images/logo.png"></a>
+  <a href="https://github.com/OpenXRIF/Synapse"><img width="140px" src="./docs/images/logo.png"></a>
 
   <h3 align="center">Synapse - VLA Inference</h3>
 
