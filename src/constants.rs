@@ -6,7 +6,7 @@ pub static WELCOME_ASCII: &str = r#"
 /\__/ / |_| | | | | (_| | |_) \__ \  __/
 \____/ \__, |_| |_|\__,_| .__/|___/\___|
         __/ |           | |             
-       |___/            |_|             BrainFlight - 2025
+       |___/            |_|             OpenXRIF - 2025
 "#;
 
 pub static RAG_ARG_PREFIX: &str = "rag:";
