@@ -27,29 +27,31 @@ pub async fn process_prompt(
 
     // TODO: Add prompt format builder at app state level.
     // NOTE: This is a temporary implementation to test the prompt builder.
-    let mut _prompt_args: HashMap<String, PromptFormatArgType> = HashMap::new();
-    _prompt_args.insert(
-        "test_arg".to_string(),
-        PromptFormatArgType::String(request.prompt_format),
-    );
-    let mut _arg_types: HashMap<String, PromptFormatArgType> = HashMap::new();
-    _arg_types.insert(
-        "test_arg".to_string(),
-        PromptFormatArgType::String("".to_string()),
-    );
-    let mut _prompt: String = build_prompt(
-        PromptFormat {
-            format_name: "test".to_string(),
-            prompt: "What is the capital of {{ test_arg }}?".to_string(),
-            prompt_args: _arg_types,
-            metadata: HashMap::new(),
-        },
-        _prompt_args,
-        &RagFiller::new(),
-    );
+    // let mut _prompt_args: HashMap<String, PromptFormatArgType> = HashMap::new();
+    // _prompt_args.insert(
+    //     "test_arg".to_string(),
+    //     PromptFormatArgType::String(request.prompt_format),
+    // );
+    // let mut _arg_types: HashMap<String, PromptFormatArgType> = HashMap::new();
+    // _arg_types.insert(
+    //     "test_arg".to_string(),
+    //     PromptFormatArgType::String("".to_string()),
+    // );
+    // let mut _prompt: String = build_prompt(
+    //     PromptFormat {
+    //         format_name: "test".to_string(),
+    //         prompt: "What is the capital of {{ test_arg }}?".to_string(),
+    //         prompt_args: _arg_types,
+    //         metadata: HashMap::new(),
+    //     },
+    //     _prompt_args,
+    //     &RagFiller::new(),
+    // );
 
     Ok(TextPromptResponse {
-        response: _interface.text_prompt(_prompt).await,
+        response: _interface
+            .text_prompt(request.prompt_format.to_string())
+            .await,
     })
 }
 
