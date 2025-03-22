@@ -7,7 +7,7 @@ edition = "2021"
 actix-web = "4"
 async-trait = "0.1.86"
 derive_more = { version = "2", features = ["full"] }
-diesel = { version = "2.2.7", features = ["sqlite", "postgres", "r2d2", "returning_clauses_for_sqlite_3_35"] }
+diesel = { version = "2.2.8", features = ["sqlite", "postgres", "r2d2", "returning_clauses_for_sqlite_3_35"] }
 dotenvy = "0.15.7"
 env_logger = "0.11.6"
 futures = "0.3.31"
